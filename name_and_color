@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--LINK REL="STYLESHEET" HREF="STYLE.CSS" -->
+
+</head>
+
+<body>
+<form id="myform" name="myform" action="">
+  <table>
+    <tr>
+      <td>First Name:</td>
+      <td>
+        <input id="txtFn" name="txtFn" type="text" value="">
+
+      </td>
+      <td>yfc</td>
+      <td>
+        <input type="radio" name="color" value="blue"/>Blue</td>
+      <td>
+        <input type="radio" name="color" value="yellow" />Yellow</td>
+    </tr>
+    <tr>
+      <td>Last name:</td>
+      <td>
+        <input id="txtln" name="txtln" type="text" value="">
+      </td>
+      <td>&nbsp;</td>
+      <td>
+        <input type="radio" name="color" value="red" />Red</td>
+      <td>
+        <input type="radio" name="color" value="black" />Black</td>
+    </tr>
+    <tr>
+      <td>Email ID:</td>
+      <td>
+        <input type="text">
+      </td>
+      <td>&nbsp;</td>
+      <td>
+        <input type="radio" name="color" value="green" />Green</td>
+      <td>
+        <input type="radio" name="color" value="others" />Others</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="button" id="btnSubmit" value="Submit" onClick="myFunction();">
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <br>
+  <b> My details:</b><br>
+  <b> My First Name :</b><span id = 'showtxtFn'></span><br>
+  <b>My Last Name :</b><span id ='showtxtln'> </span><br>
+  <b>Displayed Text Color :</b> <span id = 'showtxtColor'></span>
+
+  <script language="javascript">
+
+
+
+
+ function changeColor(selColor){
+
+
+    var colorValue = document.body.style.color;
+
+    switch(selcolor)
+    {
+      case "blue":
+      colorvalue = "#0000ff";
+      break;
+
+      case "yellow":
+        colorvalue = "#ffff00";
+        break;
+
+      case "red":
+        colorvalue = "#ff0000";
+        break;
+
+      case "black":
+        colorvalue = "#000000";
+        break;
+
+      case "green":
+        colorvalue = "#008000";
+        break;
+
+      case "others":
+	    colorvalue = "#f5f5dc";
+	    break;
+    }
+
+document.body.style.color =colorvalue;
+
+//document.getElementById().color = colorValue;
+     //document.getElementById("showtxtln").color = colorValue;
+     //document.getElementById("showtxtColor").color = colorValue;
+
+  }
+
+
+
+function updateText(){
+  // displaying First Name
+  //alert("fn alert");
+	var txtFn = document.getElementById('txtFn').value;
+	document.getElementById('showtxtFn').innerHTML = txtFn;
+
+	// displaying Last Name
+	var txtln = document.getElementById('txtln').value;
+	document.getElementById('showtxtln').innerHTML = txtln;
+
+	// displaying color of the text
+	var colors = document.getElementsByName('color');
+      var myfc;
+      for(var i = 0; i < colors.length; i++){
+          if(colors[i].checked){
+              myfc = colors[i].value;
+          }
+      }
+
+      document.getElementById('showtxtColor').innerHTML = myfc;
+}
+
+    var myFunction = function() {
+
+      var fn = document.getElementById("txtFn").value;
+      var ln= document.getElementById("txtln").value;
+      var Colors = document.getElementsByName("color");
+      var selColor;
+	        for(var i = 0; i < Colors.length; i++){
+	            if(Colors[i].checked){
+	                selColor = Colors[i].value;
+	            }
+      }
+      //alert(selColor);
+
+      if(fn== "" && ln== "")
+      {
+        alert("Please enter fn and ln");
+      }
+      else if (fn == "")
+        {
+          alert("please enter fn");
+
+        }
+        else if(ln== "")
+        {
+          alert("please enter ln");
+        }
+      else
+      {
+
+        updateText();
+        changeColor(selColor);
+      }
+    }
+
+
+
+  </script>
+  </form>
+</body>
+
+</html>
